@@ -127,20 +127,25 @@ function newComponent(details) {
     divArticle.classList.toggle("article-open");
   });
 
+  const {
+    title,
+    date,
+    firstParagraph,
+    secondParagraph,
+    thirdParagraph
+  } = details;
   divArticle.classList.add("article");
-  h2.textContent = details.title;
-  pDate.textContent = details.date;
+  h2.textContent = title;
+  pDate.textContent = date;
   pDate.classList.add("date");
-  p1.textContent = details.firstParagraph;
-  p2.textContent = details.secondParagraph;
-  p3.textContent = details.thirdParagraph;
+  p1.textContent = firstParagraph;
+  p2.textContent = secondParagraph;
+  p3.textContent = thirdParagraph;
 
-  console.log(p3);
   pDate.classList.add("date");
   const myElements = [h2, pDate, p1, p2, p3, span];
 
-  let check = myElements.map(element => divArticle.appendChild(element));
-  console.log("Array", check);
+  myElements.map(element => divArticle.appendChild(element));
 
   span.classList.add("expandButton");
   span.textContent = "Expand";
@@ -149,7 +154,7 @@ function newComponent(details) {
 }
 
 const articleContainer = document.querySelector(".articles");
-data.map(details => {
-  let article = newComponent(details);
+data.map(detail => {
+  let article = newComponent(detail);
   articleContainer.appendChild(article);
 });
